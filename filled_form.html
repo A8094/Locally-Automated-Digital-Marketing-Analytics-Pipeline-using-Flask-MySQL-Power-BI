@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submitted Campaign Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            padding: 30px;
+        }
+        .box {
+            width: 650px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #aaa;
+        }
+        h2 {
+            text-align: center;
+            color: green;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 12px;
+            border: 1px solid #999;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            background: #007bff;
+            color: white;
+            padding: 10px;
+            border-radius: 6px;
+        }
+        a:hover {
+            background: #0056cc;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>📄 Submitted Campaign Details</h2>
+
+    {% for key, value in data.items() %}
+        <label>{{ key.replace("_"," ").title() }}</label>
+        <input type="text" value="{{ value }}" readonly>
+    {% endfor %}
+
+    <a href="/">➕ Add New Campaign</a>
+</div>
+
+</body>
+</html>
