@@ -63,10 +63,122 @@ This project follows a **local end-to-end data automation pipeline**, where digi
 
 ### 🔗 Data Flow Architecture
 
-```text
+```
 
                  CSV (MySQL Load) 📄 → MySQL 🗄️
               ⭧
 Local Flask 🖥️
               🡖
                 CSV (Power BI Source) 📄 → Power BI 📊
+
+```
+---
+
+
+### ‼️ Before Running the Code – Follow the Given Steps ‼️ 
+
+### Step 1️⃣:
+**🌟🌟🌟🌟🌟 DOWNLOAD THE GIVEN CSV FILES AND STORE THEM IN THE BELOW MENTIONED PATHS 👇🏻👇🏻👇🏻👇🏻👇🏻👇🏻**
+```
+📂 C:\
+ └── MarketingDat\
+     └── DIGITAL_MARKETING_AD_PERFORMANCE_DATA.csv
+         -------- DOWNLOADED CSV FILE
+
+📂 C:\
+ └── Users\
+     └── <your-username>\
+         └── OneDrive\
+             └── Documents\
+                 └── digitalmarketing dataset\
+                     └── powerbi_digital_marketing_data.csv
+                         -------- DOWNLOADED CSV FILE
+
+```
+### Step 2️⃣:
+**🌟🌟🌟 MY SQL DATABASE AND TABLE SETUP 🌟🌟🌟🌟🌟**
+
+FOR DATABASE:
+```
+CREATE DATABASE digital_marketing;
+USE digital_marketing;
+```
+FOR TABLE:
+```
+IMPORT CSV FILE FROM:
+📂 C:\
+ └── MarketingDat\
+     └── DIGITAL_MARKETING_AD_PERFORMANCE_DATA.csv -------- DOWNLOADED CSV FILE
+```
+
+### Step 3️⃣:
+**🌟🌟🌟🌟🌟 INSTALL FLASK AND PYMYSQL IN TERMINAL🌟🌟🌟🌟🌟**
+```
+pip install flask pymysql
+```
+----
+### Step 4️⃣:
+**🌟🌟🌟🌟🌟 COPY & PASTE THE GIVEN CODE AND SAVE FILES AS SHOWN BELOW 👇🏻👇🏻👇🏻🌟🌟🌟🌟🌟**
+
+**I.PASTE THE MAIN CODE AND SAVE IN:**
+
+```
+📂 C:\Users\YOUR-USERNAME\OneDrive\Documents\digital_marketing analysis\
+ └── combined_form.py
+```
+
+**II.PASTE THE HTML CODE FOR DATA ENTRY AND SAVE IN:**
+
+```
+📂 C:\Users\YOUR-USERNAME\OneDrive\Documents\digital_marketing analysis\templates\
+ └── form.html
+```
+
+**III.PASTE THE HTML CODE FOR CONFIRMATION PAGE AND SAVE IN:**
+
+```
+📂 C:\Users\YOUR-USERNAME\OneDrive\Documents\digital_marketing analysis\templates\
+ └── filled_form.html
+```
+
+### Step 5️⃣:
+🌟🌟🌟🌟🌟 UPDATE THE CODE 🌟🌟🌟🌟🌟
+
+**I.IN MYSQL CONNECTION SECTION:**
+```
+db = pymysql.connect(
+    host="localhost",
+    user="root",
+  ‼️password="YOUR_MYSQL_PASSWORD",   ‼️ UPDATE THIS LINE‼️
+    database="digital_marketing",
+    autocommit=False
+)
+cursor = db.cursor()
+```
+**II.IN FILE PATHS SECTION:**
+```
+   CSV_FILE = r"C:\MarketingDat\DIGITAL_MARKETING_AD_PERFORMANCE_DATA.csv"
+‼️ ONEDRIVE_CSV = r"C:\Users\‼️YOUR-USERNAME‼️\OneDrive\Documents\digitalmarketing dataset\powerbi_digital_marketing_data.csv" ‼️ UPDATE THIS LINE‼️
+   queue = Queue()
+   lock = Lock()
+```
+
+### Step 6️⃣:
+
+```
+RUN THE PYTHON FILE-python combined_form.py
+
+A LOCAL URL WILL APPEAR IN TERMINAL (Example:
+http://127.0.0.1:5000)
+
+PRESS CTRL + CLICK ON THE LINK TO OPEN THE BROWSER
+AND START FILLING THE FORM
+```
+
+**################ ✅ IMPORTANT NOTES ################**
+
+- This project runs ONLY on a local system
+- Flask must be running to access the application
+- One Local Flask application writes to TWO CSV files
+- One CSV is loaded into MySQL for SQL analysis
+- One CSV is used as the data source for Power BI
