@@ -142,6 +142,19 @@ pip install flask pymysql
 ```
 
 ### Step 5️⃣:
+
+🌟🌟🌟🌟🌟Updating CSV Path in Power BI (One-Time Setup)🌟🌟🌟🌟🌟
+
+1. Open the `.pbix` file in Power BI Desktop
+2. Go to **Home → Transform data → Data source settings**
+3. Select the CSV source and click **Change Source**
+4. Browse and select:
+   `powerbi_digital_marketing_data.csv`
+5. Click **OK → Close & Apply**
+6. Click **Refresh**
+
+
+### Step 6️⃣:
 🌟🌟🌟🌟🌟 UPDATE THE CODE 🌟🌟🌟🌟🌟
 
 **I.IN MYSQL CONNECTION SECTION:**
@@ -163,7 +176,7 @@ cursor = db.cursor()
    lock = Lock()
 ```
 
-### Step 6️⃣:
+### Step 7️⃣:
 
 ```
 RUN THE PYTHON FILE-python combined_form.py
